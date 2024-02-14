@@ -1,6 +1,11 @@
 /** @type { import('@storybook/react').Preview } */
-import '../src/index.css'
+import "../src/index.css";
+import { initialize, mswLoader } from "msw-storybook-addon";
 
+// Initialize MSW
+initialize();
+
+// Configure Storybook to log the actions( onArchiveTask, onPinTask)
 const preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
@@ -11,6 +16,7 @@ const preview = {
       },
     },
   },
+  loaders: [mswLoader],
 };
 
 export default preview;
